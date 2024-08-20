@@ -29,3 +29,11 @@ jobs:
         docker compose up --build --detach
         sleep 10
         curl --fail localhost:8000
+    - uses: ./.github/actions/prep
+        env:
+          VAULT_PASS: ${{ secrets.VAULT_PASS }}
+    - name: hide credentials from the output
+      run: |
+        echo "::add-mask::$POSTGRES_USER"
+        echo "::add-mask::$POSTGRES_PASSWORD"
+        echo "::add-mask::$POSTGRES_DB"
