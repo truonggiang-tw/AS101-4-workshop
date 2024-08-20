@@ -5,6 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.7' 
+      - name: Install python manifest files
+        run: pip install -r "requirements.txt"
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python-3.7@master
         env:
