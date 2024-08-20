@@ -7,6 +7,20 @@ app = Flask(__name__)
 app.config.from_pyfile('config.py')
 db.init_app(app)
 
+@app.route('/input')
+def input():
+    return '''
+    <form method="post" action="/test">
+        <input type="text" name="name" placeholder="Enter your name">
+        <input type="submit" value="Submit">
+    </form>
+    '''
+
+@app.route('/test', methods=['POST'])
+def test():
+    name = request.form['name']
+    template = f"Hello, {name}!"
+    return render_template_string(template)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
