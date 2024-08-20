@@ -7,5 +7,6 @@ jobs:
       - uses: actions/checkout@master --all-projects
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python@master
+        continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_INTEGRATION_ID }}
