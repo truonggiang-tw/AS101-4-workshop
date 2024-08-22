@@ -20,8 +20,8 @@ def input():
 def test():
     name = request.form['name']
     template = f"Hello, {name}!"
-    return render_template_string(template)
-    # return render_template('hello.html', name=name)
+    # return render_template_string(template)
+    return render_template('hello.html', name=name)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
